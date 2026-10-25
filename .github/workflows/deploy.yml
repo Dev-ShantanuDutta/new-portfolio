@@ -1,0 +1,38 @@
+name: Deploy Portfolio App
+
+on:
+  push:
+    branches:
+      - gh-pages  # Triggers whenever you push changes to gh-pages
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Configure Pages Environment
+        uses: actions/configure-pages@v5
+
+      - name: Package Build Artifacts
+        uses: actions/upload-pages-artifact@v3
+        with:
+          # Points GitHub directly to your ready-made production folder path!
+          path: './dist/portfolio/browser'
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
