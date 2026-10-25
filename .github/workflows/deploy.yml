@@ -3,7 +3,7 @@ name: Deploy Portfolio App
 on:
   push:
     branches:
-      - gh-pages  # Triggers whenever you push changes to gh-pages
+      - gh-pages
 
 permissions:
   contents: read
@@ -27,10 +27,10 @@ jobs:
       - name: Configure Pages Environment
         uses: actions/configure-pages@v5
 
-      - name: Package Build Artifacts
+      - name: Package Existing Build Folder
         uses: actions/upload-pages-artifact@v3
         with:
-          # Points GitHub directly to your ready-made production folder path!
+          # Directly target your build output folder
           path: './dist/portfolio/browser'
 
       - name: Deploy to GitHub Pages
