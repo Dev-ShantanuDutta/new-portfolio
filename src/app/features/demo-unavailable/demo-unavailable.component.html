@@ -1,0 +1,94 @@
+<section class="demo-unavailable">
+  <svg class="demo-unavailable__backdrop" aria-hidden="true" focusable="false">
+    <defs>
+      <pattern id="demo-unavailable-dots" width="24" height="24" patternUnits="userSpaceOnUse">
+        <circle cx="2" cy="2" r="1.25" />
+      </pattern>
+      <radialGradient id="demo-unavailable-fade" cx="50%" cy="40%" r="60%">
+        <stop offset="0%" stop-color="#fff" stop-opacity="1" />
+        <stop offset="100%" stop-color="#fff" stop-opacity="0" />
+      </radialGradient>
+      <mask id="demo-unavailable-mask">
+        <rect width="100%" height="100%" fill="url(#demo-unavailable-fade)" />
+      </mask>
+    </defs>
+    <rect
+      width="100%"
+      height="100%"
+      fill="url(#demo-unavailable-dots)"
+      mask="url(#demo-unavailable-mask)"
+    />
+  </svg>
+
+  <!-- A client dashboard with its data redacted, locked behind a shield. -->
+  <svg
+    class="demo-unavailable__art reveal-on-load"
+    viewBox="0 0 320 220"
+    aria-hidden="true"
+    focusable="false"
+  >
+    <defs>
+      <linearGradient id="demo-unavailable-accent" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0%" stop-color="#f56a47" />
+        <stop offset="100%" stop-color="#f97a1f" />
+      </linearGradient>
+    </defs>
+
+    <g class="demo-unavailable__window">
+      <rect class="demo-unavailable__frame" x="20" y="16" width="280" height="188" rx="14" />
+      <circle class="demo-unavailable__light" cx="40" cy="36" r="4" />
+      <circle class="demo-unavailable__light" cx="54" cy="36" r="4" />
+      <circle class="demo-unavailable__light" cx="68" cy="36" r="4" />
+      <line class="demo-unavailable__divider" x1="20" y1="54" x2="300" y2="54" />
+
+      <rect class="demo-unavailable__sidebar" x="36" y="70" width="56" height="118" rx="8" />
+      <rect class="demo-unavailable__bar" x="108" y="70" width="176" height="28" rx="6" />
+      <rect class="demo-unavailable__bar" x="108" y="108" width="84" height="80" rx="6" />
+      <rect class="demo-unavailable__bar" x="200" y="108" width="84" height="36" rx="6" />
+      <rect class="demo-unavailable__bar" x="200" y="152" width="84" height="36" rx="6" />
+    </g>
+
+    <circle class="demo-unavailable__glow" cx="160" cy="118" r="62" />
+    <path
+      fill="url(#demo-unavailable-accent)"
+      d="M160 66 l42 15 v31 c0 29 -18 50 -42 60 c-24 -10 -42 -31 -42 -60 v-31 z"
+    />
+    <path class="demo-unavailable__shackle" d="M150 113 v-8 a10 10 0 0 1 20 0 v8" />
+    <rect class="demo-unavailable__lock" x="143" y="112" width="34" height="27" rx="5" />
+    <circle cx="160" cy="123" r="3.5" fill="url(#demo-unavailable-accent)" />
+    <rect x="158.5" y="124" width="3" height="7" rx="1.5" fill="url(#demo-unavailable-accent)" />
+  </svg>
+
+  <p class="demo-unavailable__eyebrow reveal-on-load" style="--reveal-delay: 80ms">
+    <svg viewBox="0 0 16 16" aria-hidden="true" focusable="false">
+      <path
+        d="M4.5 7V5a3.5 3.5 0 0 1 7 0v2M3.5 7h9a1 1 0 0 1 1 1v5a1 1 0 0 1-1 1h-9a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1z"
+      />
+    </svg>
+    Client project
+  </p>
+
+  <h1 class="demo-unavailable__title reveal-on-load" style="--reveal-delay: 140ms">
+    Sorry, this demo isn't available
+  </h1>
+
+  <p class="demo-unavailable__body reveal-on-load" style="--reveal-delay: 200ms">
+    @if (match(); as project) {
+      <strong>{{ project.name }}</strong> was built
+      @if (project.company) {
+        at {{ project.company }}
+      }
+      for a client and runs on their real data, so I can't share a public demo.
+    } @else {
+      This project was built for a client and runs on their real data, so I can't share a public
+      demo.
+    }
+    The project details cover what it does and how I built it, and I'm happy to walk you through it
+    on a call.
+  </p>
+
+  <div class="demo-unavailable__actions reveal-on-load" style="--reveal-delay: 260ms">
+    <app-pill-button label="Back to projects" variant="primary" (clicked)="backToProjects()" />
+    <app-pill-button label="Get in touch" variant="secondary" href="/#contact" />
+  </div>
+</section>

@@ -1,0 +1,17 @@
+[
+  {
+    "title": "[YOUR: title of an article/talk that shaped how you think about engineering]",
+    "url": "[YOUR: https://example.com/article-1]",
+    "note": "[YOUR: one honest sentence on why this stuck with you]"
+  },
+  {
+    "title": "[YOUR: title of a second bookmark]",
+    "url": "[YOUR: https://example.com/article-2]",
+    "note": "[YOUR: one honest sentence on why this stuck with you]"
+  },
+  {
+    "title": "[YOUR: title of a third bookmark — the strategy doc's reference used one with a self-aware, ironic tone; pick something that reflects your own taste]",
+    "url": "[YOUR: https://example.com/article-3]",
+    "note": "[YOUR: one honest sentence on why this stuck with you]"
+  }
+]

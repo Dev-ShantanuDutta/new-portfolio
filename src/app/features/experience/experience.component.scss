@@ -1,0 +1,51 @@
+.experience {
+  padding: var(--space-6);
+}
+
+.experience__trigger {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  flex-wrap: wrap;
+  flex: 1;
+  min-width: 0;
+}
+
+.experience__details {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 0%;
+  min-width: 0;
+}
+
+.experience__sub-details {
+  display: flex;
+  width: 100%;
+  gap: var(--space-3);
+  align-items: center;
+}
+
+.experience__role {
+  font-weight: 600;
+  color: var(--color-text-primary);
+}
+
+.experience__company {
+  color: var(--color-text-secondary);
+}
+
+.experience__dates {
+  margin-left: auto;
+  font-size: var(--text-sm);
+  color: var(--color-text-secondary);
+}
+
+.experience__summary {
+  margin: 0 0 var(--space-3);
+}
+
+.experience__highlights {
+  margin: 0;
+  padding-left: var(--space-5);
+  color: var(--color-text-secondary);
+}

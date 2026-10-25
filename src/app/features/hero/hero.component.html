@@ -1,0 +1,56 @@
+<section id="hero" class="hero">
+  <app-gradient-blob class="hero__blob" size="lg" position="center" />
+
+  @if (identity(); as identity) {
+    <app-panel class="hero__identity">
+      <p class="hero__log-line reveal-on-load">
+        <time [attr.datetime]="identity.currentFocusDate">{{
+          identity.currentFocusDate | date: 'mediumDate'
+        }}</time>
+        — Currently thinking about: {{ identity.currentFocus }}
+      </p>
+
+      <h1 class="hero__headline reveal-on-load" style="--reveal-delay: 80ms">
+        {{ identity.name }} —
+        @for (segment of identity.specialization; track $index) {
+          @if (segment.highlighted) {
+            <app-highlight-text>{{ segment.text }}</app-highlight-text>
+          } @else {
+            {{ segment.text }}
+          }
+        }
+      </h1>
+
+      <p class="hero__trust reveal-on-load" style="--reveal-delay: 160ms">
+        @if (yearsExperience(); as years) {
+          <span><app-count-up [value]="years" /> years of full-stack experience</span>
+        }
+        @if (githubProfile(); as profile) {
+          <a [href]="profile.profileUrl"
+            ><app-count-up [value]="profile.publicRepos" /> public repos on GitHub ↗</a
+          >
+        }
+        @if (currentRole(); as role) {
+          <span>Currently @ {{ role.company }}</span>
+        }
+      </p>
+
+      <div class="hero__ctas reveal-on-load" style="--reveal-delay: 240ms">
+        <div class="hero__ctas-primary">
+          @for (cta of identity.ctas; track cta.label) {
+            @if (cta.variant === 'primary') {
+              <app-pill-button [label]="cta.label" [variant]="cta.variant" [href]="cta.href" />
+            }
+          }
+        </div>
+        <div class="hero__ctas-secondary">
+          @for (cta of identity.ctas; track cta.label) {
+            @if (cta.variant !== 'primary') {
+              <app-pill-button [label]="cta.label" [variant]="cta.variant" [href]="cta.href" />
+            }
+          }
+        </div>
+      </div>
+    </app-panel>
+  }
+</section>

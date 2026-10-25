@@ -1,0 +1,21 @@
+<section id="writing" class="writing">
+  <div class="writing__list">
+    @for (post of posts(); track post.slug) {
+      <app-panel [label]="post.title">
+        <p class="writing__meta">
+          <app-icon-chip icon="📅" label="Published" />
+          <time [attr.datetime]="post.publishedDate">{{
+            post.publishedDate | date: 'mediumDate'
+          }}</time>
+        </p>
+        <p class="writing__summary">{{ post.summary }}</p>
+        <div class="writing__tags">
+          @for (tag of post.tags; track tag) {
+            <span class="writing__tag">{{ tag }}</span>
+          }
+        </div>
+        <a [routerLink]="['/blog', post.slug]">Read post ↗</a>
+      </app-panel>
+    }
+  </div>
+</section>

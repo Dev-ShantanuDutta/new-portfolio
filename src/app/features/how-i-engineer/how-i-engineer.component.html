@@ -1,0 +1,19 @@
+<section id="how-i-engineer" class="how-i-engineer">
+  <div class="how-i-engineer__grid">
+    @for (step of processSteps(); track step.title) {
+      <app-panel [label]="step.title" [isHighlighted]="step.isHighlighted" [appReveal]="$index">
+        <p class="how-i-engineer__summary">{{ step.summary }}</p>
+        <ul class="how-i-engineer__points">
+          @for (point of step.points; track point.term) {
+            <li>
+              <strong class="how-i-engineer__term">{{ point.term }}</strong>
+              <span class="how-i-engineer__why">({{ point.why }})</span>
+              — {{ point.detail }}
+            </li>
+          }
+        </ul>
+        <p class="how-i-engineer__example"><strong>In practice:</strong> {{ step.example }}</p>
+      </app-panel>
+    }
+  </div>
+</section>

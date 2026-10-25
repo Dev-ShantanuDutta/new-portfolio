@@ -1,0 +1,124 @@
+<section class="coming-soon">
+  <!-- Blueprint grid that fades out from the centre, filling the whole page. -->
+  <svg class="coming-soon__backdrop" aria-hidden="true" focusable="false">
+    <defs>
+      <pattern id="coming-soon-grid" width="32" height="32" patternUnits="userSpaceOnUse">
+        <path d="M32 0H0V32" />
+      </pattern>
+      <radialGradient id="coming-soon-fade" cx="50%" cy="40%" r="60%">
+        <stop offset="0%" stop-color="#fff" stop-opacity="1" />
+        <stop offset="100%" stop-color="#fff" stop-opacity="0" />
+      </radialGradient>
+      <mask id="coming-soon-mask">
+        <rect width="100%" height="100%" fill="url(#coming-soon-fade)" />
+      </mask>
+    </defs>
+    <rect width="100%" height="100%" fill="url(#coming-soon-grid)" mask="url(#coming-soon-mask)" />
+  </svg>
+
+  <!-- An editor window mid-build: code being written, a progress bar filling, gears turning. -->
+  <svg
+    class="coming-soon__art reveal-on-load"
+    viewBox="0 0 320 220"
+    aria-hidden="true"
+    focusable="false"
+  >
+    <defs>
+      <linearGradient id="coming-soon-accent" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0%" stop-color="#f56a47" />
+        <stop offset="100%" stop-color="#f97a1f" />
+      </linearGradient>
+      <pattern id="coming-soon-stripes" width="12" height="12" patternUnits="userSpaceOnUse">
+        <path d="M-3 3l6-6M0 12L12 0M9 15l6-6" />
+      </pattern>
+      <clipPath id="coming-soon-progress">
+        <rect x="40" y="170" width="160" height="10" rx="5" />
+      </clipPath>
+    </defs>
+
+    <rect class="coming-soon__frame" x="20" y="16" width="280" height="188" rx="14" />
+    <circle class="coming-soon__light" cx="40" cy="36" r="4" />
+    <circle class="coming-soon__light" cx="54" cy="36" r="4" />
+    <circle class="coming-soon__light" cx="68" cy="36" r="4" />
+    <line class="coming-soon__divider" x1="20" y1="54" x2="300" y2="54" />
+
+    <!-- Code lines; the last one is still being typed. -->
+    <rect class="coming-soon__token" x="40" y="72" width="22" height="8" rx="4" />
+    <rect class="coming-soon__code" x="68" y="72" width="96" height="8" rx="4" />
+    <rect class="coming-soon__code" x="56" y="90" width="120" height="8" rx="4" />
+    <rect class="coming-soon__token" x="56" y="108" width="30" height="8" rx="4" />
+    <rect class="coming-soon__code" x="92" y="108" width="64" height="8" rx="4" />
+    <rect class="coming-soon__code" x="56" y="126" width="88" height="8" rx="4" />
+    <rect class="coming-soon__code" x="40" y="144" width="52" height="8" rx="4" />
+    <rect class="coming-soon__cursor" x="96" y="142" width="3" height="12" rx="1.5" />
+
+    <rect class="coming-soon__track" x="40" y="170" width="240" height="10" rx="5" />
+    <g clip-path="url(#coming-soon-progress)">
+      <rect x="40" y="170" width="160" height="10" fill="url(#coming-soon-accent)" />
+      <rect
+        class="coming-soon__stripes"
+        x="28"
+        y="170"
+        width="184"
+        height="10"
+        fill="url(#coming-soon-stripes)"
+      />
+    </g>
+
+    <!-- Two meshing gears. Teeth are one rect rotated around the gear's centre. -->
+    <g class="coming-soon__gear coming-soon__gear--large" fill="url(#coming-soon-accent)">
+      <circle cx="252" cy="70" r="24" />
+      @for (angle of largeTeeth; track angle) {
+        <rect
+          x="247"
+          y="38"
+          width="10"
+          height="12"
+          rx="2"
+          [attr.transform]="'rotate(' + angle + ' 252 70)'"
+        />
+      }
+      <circle class="coming-soon__hub" cx="252" cy="70" r="9" />
+    </g>
+    <g class="coming-soon__gear coming-soon__gear--small" fill="url(#coming-soon-accent)">
+      <circle cx="284" cy="110" r="13" />
+      @for (angle of smallTeeth; track angle) {
+        <rect
+          x="281"
+          y="92"
+          width="6"
+          height="8"
+          rx="1.5"
+          [attr.transform]="'rotate(' + angle + ' 284 110)'"
+        />
+      }
+      <circle class="coming-soon__hub" cx="284" cy="110" r="5" />
+    </g>
+  </svg>
+
+  <p class="coming-soon__eyebrow reveal-on-load" style="--reveal-delay: 80ms">
+    <span class="coming-soon__pulse" aria-hidden="true"></span>
+    Work in progress
+  </p>
+
+  <h1 class="coming-soon__title reveal-on-load" style="--reveal-delay: 140ms">
+    @if (projectName(); as name) {
+      {{ name }} is coming soon
+    } @else {
+      Coming soon
+    }
+  </h1>
+
+  <p class="coming-soon__body reveal-on-load" style="--reveal-delay: 200ms">
+    I'm still building this one. The live demo and source code will be published as soon as it's
+    ready to show.
+  </p>
+
+  <app-pill-button
+    class="reveal-on-load"
+    style="--reveal-delay: 260ms"
+    label="Back to projects"
+    variant="primary"
+    (clicked)="backToProjects()"
+  />
+</section>
