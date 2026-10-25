@@ -1,0 +1,18 @@
+[
+  {
+    "slug": "[YOUR: first-post-slug]",
+    "title": "[YOUR: first post title]",
+    "publishedDate": "2026-08-01",
+    "summary": "[YOUR: one-sentence summary of what this post covers]",
+    "tags": ["Angular", "Performance"],
+    "content": "[YOUR: full post body. Rendered as plain text for now — a markdown pipeline can be added later if you want richer formatting (headings, code blocks, etc.).]"
+  },
+  {
+    "slug": "[YOUR: second-post-slug]",
+    "title": "[YOUR: second post title]",
+    "publishedDate": "2026-06-15",
+    "summary": "[YOUR: one-sentence summary of what this post covers]",
+    "tags": ["System Design"],
+    "content": "[YOUR: full post body. Rendered as plain text for now — a markdown pipeline can be added later if you want richer formatting (headings, code blocks, etc.).]"
+  }
+]

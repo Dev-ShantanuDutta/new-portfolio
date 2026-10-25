@@ -1,0 +1,10 @@
+<div class="panel" [class.panel--highlighted]="isHighlighted()">
+  @if (label()) {
+    <!-- h2: every panel sits directly under the page's one h1 (hero headline), so this
+         is the correct next level — bumping it would skip a level (WCAG heading order). -->
+    <h2 class="panel__header">{{ label() }}</h2>
+  }
+  <div class="panel__body">
+    <ng-content />
+  </div>
+</div>

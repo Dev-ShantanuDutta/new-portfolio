@@ -1,0 +1,32 @@
+:root {
+  --color-bg-page: #f9fafb;
+  --color-bg-panel: #ffffff;
+  --color-border-subtle: #d1d5db;
+  --color-text-primary: #111827;
+  --color-text-secondary: #4b5563;
+
+  /* Gradient for filled surfaces (primary CTAs, active pills, highlights);
+     the solid accent for small text, icons, borders and outlines. */
+  --gradient-accent: linear-gradient(135deg, #f56a47, #f97a1f);
+  /* Darkened for WCAG contrast on light backgrounds. */
+  --color-accent: #df522c;
+  --color-accent-contrast: #ffffff;
+  --color-accent-ghost: rgba(245, 106, 71, 0.1);
+
+  --color-status-live: #3b82f6;
+  --color-status-pinned: #22c55e;
+
+  /* Deliberately constant across themes: several real brand marks (e.g.
+     Angular, Express) are near-black and would vanish on the dark theme's
+     background, so logo chips always sit on a fixed light backing. */
+  --color-logo-chip-bg: #ffffff;
+
+  &[data-theme='dark'] {
+    --color-bg-page: #0b0f17;
+    --color-bg-panel: #161d2b;
+    --color-border-subtle: #222e42;
+    --color-text-primary: #f3f4f6;
+    --color-text-secondary: #94a3b8;
+    --color-accent: #f77234;
+  }
+}

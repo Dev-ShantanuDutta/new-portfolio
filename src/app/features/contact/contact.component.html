@@ -1,0 +1,16 @@
+<section id="contact" class="contact">
+  <div class="contact__links">
+    @for (link of links(); track link.label) {
+      <div class="contact__row" [appReveal]="$index">
+        <app-icon-chip [icon]="link.icon" [label]="link.label" />
+        <app-pill-button [label]="link.label" variant="secondary" [href]="link.href" />
+      </div>
+    }
+  </div>
+</section>
+
+<nav class="contact__mobile-bar" aria-label="Quick contact">
+  @for (link of links(); track link.label) {
+    <a [href]="link.href">{{ link.label }}</a>
+  }
+</nav>

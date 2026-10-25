@@ -1,0 +1,106 @@
+<app-accordion-item
+  [title]="project().name"
+  [hasCustomTrigger]="true"
+  expandHint="View details"
+  [expanded]="initiallyExpanded()"
+>
+  <div accordion-trigger class="project-case-study__teaser">
+    <app-status-dot [status]="project().status" />
+    <span class="project-case-study__name">{{ project().name }}</span>
+    <span
+      class="project-case-study__origin"
+      [class.project-case-study__origin--company]="project().origin === 'company'"
+    >
+      @if (project().origin === 'company') {
+        {{ project().company ?? 'Company' }}
+      } @else {
+        Personal
+      }
+    </span>
+    <span class="project-case-study__reframe">{{ project().reframe }}</span>
+    <div class="project-case-study__tags">
+      @for (tag of project().techTags; track tag) {
+        <app-tech-badge [name]="tag" />
+      }
+    </div>
+  </div>
+
+  <div class="project-case-study__links">
+    @if (project().links.demo; as demo) {
+      <app-pill-button label="Try it" variant="primary" [href]="demo" [newTab]="true" />
+    }
+    @if (project().links.github; as github) {
+      <app-pill-button label="GitHub" variant="secondary" [href]="github" [newTab]="true" />
+    }
+  </div>
+
+  @if (project().overview; as overview) {
+    <div class="project-overview">
+      <section class="project-overview__block">
+        <h4 class="project-overview__heading">Purpose</h4>
+        <p>{{ overview.purpose }}</p>
+      </section>
+
+      <section class="project-overview__block">
+        <h4 class="project-overview__heading">Target audience</h4>
+        <p>{{ overview.audience }}</p>
+      </section>
+
+      <section class="project-overview__block project-overview__block--wide">
+        <h4 class="project-overview__heading">What it solves</h4>
+        <ul class="project-overview__list">
+          @for (point of overview.solves; track point.detail) {
+            <li>
+              @if (point.title) {
+                <strong>{{ point.title }}</strong>
+              }
+              {{ point.detail }}
+            </li>
+          }
+        </ul>
+      </section>
+
+      <section class="project-overview__block project-overview__block--wide">
+        <h4 class="project-overview__heading">What I learned</h4>
+        <ul class="project-overview__list">
+          @for (point of overview.learned; track point.detail) {
+            <li>
+              @if (point.title) {
+                <strong>{{ point.title }}</strong>
+              }
+              {{ point.detail }}
+            </li>
+          }
+        </ul>
+      </section>
+    </div>
+  } @else if (project().caseStudy; as caseStudy) {
+    <dl class="project-case-study__details">
+      <dt>Problem</dt>
+      <dd>{{ caseStudy.problem }}</dd>
+
+      <dt>Constraints</dt>
+      <dd>{{ caseStudy.constraints }}</dd>
+
+      <dt>Role</dt>
+      <dd>{{ caseStudy.role }}</dd>
+
+      @if (caseStudy.architecture) {
+        <dt>Architecture</dt>
+        <dd>{{ caseStudy.architecture }}</dd>
+      }
+
+      <dt>Technical challenge</dt>
+      <dd>{{ caseStudy.technicalChallenge }}</dd>
+
+      <dt>Decision</dt>
+      <dd>{{ caseStudy.decision }}</dd>
+
+      <dt>Result</dt>
+      <dd>{{ caseStudy.result }}</dd>
+
+      <dt>What I learned</dt>
+      <dd>{{ caseStudy.learned }}</dd>
+    </dl>
+  }
+</app-accordion-item>

@@ -1,0 +1,66 @@
+.proof-strip {
+  display: flex;
+  flex-direction: column;
+  gap: var(--panel-gap);
+  padding: var(--space-6);
+}
+
+.proof-strip__github-stats {
+  display: flex;
+  gap: var(--space-5);
+  margin: 0 0 var(--space-3);
+}
+
+.proof-strip__certifications {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.proof-strip__certification {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-2);
+}
+
+.proof-strip__issuers {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+
+.proof-strip__issuer {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-1) var(--space-3);
+  border: 1px solid var(--color-border-subtle);
+  border-radius: var(--radius-chip);
+  font-size: var(--text-sm);
+  color: var(--color-text-secondary);
+}
+
+.proof-strip__issuer-logo-chip {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--space-4);
+  height: var(--space-4);
+  border-radius: 50%;
+  background: var(--color-logo-chip-bg);
+}
+
+.proof-strip__issuer-logo {
+  display: block;
+}
+
+.proof-strip__tech-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}

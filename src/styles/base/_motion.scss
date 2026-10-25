@@ -1,0 +1,175 @@
+// Site-wide motion. Progressive enhancement throughout:
+// - Content is never hidden unless <html> has the `motion` class, which only the
+//   inline script in index.html adds (and removes again if the app fails to boot).
+// - Every animation is reduced or removed under prefers-reduced-motion.
+// - Only opacity and transforms (translate/scale/rotate) are animated.
+
+html {
+  scroll-padding-top: var(--nav-offset);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+// ---------------------------------------------------------------------------
+// Keyboard focus — the same feedback as hover, settling in from a wider ring.
+// ---------------------------------------------------------------------------
+:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  :focus-visible {
+    animation: focus-ring-in var(--duration-fast) var(--ease-out);
+  }
+}
+
+@keyframes focus-ring-in {
+  from {
+    outline-offset: 7px;
+    outline-color: transparent;
+  }
+}
+
+// ---------------------------------------------------------------------------
+// Inline text links (no class of their own): a faint resting underline so they
+// read as links without relying on colour, and an accent line that draws in.
+// ---------------------------------------------------------------------------
+:where(main, footer) a:not([class]) {
+  padding-bottom: 2px;
+  background-image:
+    linear-gradient(var(--color-accent), var(--color-accent)),
+    linear-gradient(currentColor, currentColor);
+  background-image:
+    linear-gradient(var(--color-accent), var(--color-accent)),
+    linear-gradient(
+      color-mix(in srgb, currentColor 35%, transparent),
+      color-mix(in srgb, currentColor 35%, transparent)
+    );
+  background-repeat: no-repeat;
+  background-position:
+    left bottom,
+    left bottom;
+  background-size:
+    0% 1px,
+    100% 1px;
+  transition:
+    background-size var(--duration-base) var(--ease-out),
+    color var(--duration-base) var(--ease-out);
+
+  &:hover,
+  &:focus-visible {
+    color: var(--color-text-primary);
+    background-size:
+      100% 1px,
+      100% 1px;
+  }
+}
+
+// ---------------------------------------------------------------------------
+// Reveals
+// ---------------------------------------------------------------------------
+
+// Above-the-fold content (hero, standalone pages): pure CSS, so it plays on
+// first paint without waiting for JavaScript. Held while the intro is on screen.
+.motion .reveal-on-load {
+  animation: reveal-in var(--reveal-duration) var(--ease-reveal) both;
+  animation-delay: var(--reveal-delay, 0ms);
+}
+
+.motion.intro-playing .reveal-on-load {
+  animation-play-state: paused;
+}
+
+@keyframes reveal-in {
+  from {
+    opacity: 0;
+    translate: 0 var(--reveal-distance);
+  }
+}
+
+// Scroll-triggered: RevealDirective adds `is-revealed` once the element is in view.
+.motion [data-reveal] {
+  transition:
+    opacity var(--reveal-duration) var(--ease-reveal),
+    translate var(--reveal-duration) var(--ease-reveal);
+  transition-delay: var(--reveal-delay, 0ms);
+
+  &:not(.is-revealed) {
+    opacity: 0;
+    translate: 0 var(--reveal-distance);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  // Keep a short fade (no movement) so content still arrives gently.
+  .motion .reveal-on-load {
+    animation-name: fade-in;
+    animation-duration: var(--duration-base);
+  }
+
+  .motion [data-reveal] {
+    translate: none !important;
+    transition-property: opacity;
+    transition-duration: var(--duration-base);
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+}
+
+@media print {
+  .reveal-on-load,
+  [data-reveal] {
+    opacity: 1 !important;
+    translate: none !important;
+    animation: none !important;
+  }
+}
+
+// ---------------------------------------------------------------------------
+// Page transitions. Same-document: Angular's withViewTransitions(). Cross-
+// document (e.g. a full page load from the coming-soon page): the at-rule below.
+// Browsers without the View Transitions API simply switch pages instantly.
+// ---------------------------------------------------------------------------
+@view-transition {
+  navigation: auto;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  ::view-transition-old(root) {
+    animation: page-out var(--duration-fast) var(--ease-in-out) both;
+  }
+
+  ::view-transition-new(root) {
+    animation: page-in var(--duration-slow) var(--ease-out) both;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-group(*),
+  ::view-transition-old(*),
+  ::view-transition-new(*) {
+    animation: none !important;
+  }
+}
+
+@keyframes page-out {
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes page-in {
+  from {
+    opacity: 0;
+    translate: 0 8px;
+  }
+}

@@ -1,0 +1,36 @@
+// One full-width column while the Bookmarks panel is commented out; bring back
+// `repeat(2, 1fr)` (single column under 640px) if it returns.
+.about-taste {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--panel-gap);
+  padding: var(--space-6);
+}
+
+.about-taste__bio {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  // Comfortable line length for several paragraphs of prose.
+  max-width: 75ch;
+  color: var(--color-text-secondary);
+
+  p {
+    margin: 0;
+  }
+}
+
+.about-taste__bookmarks {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.about-taste__bookmark-note {
+  margin: var(--space-1) 0 0;
+  font-size: var(--text-sm);
+  color: var(--color-text-secondary);
+}
