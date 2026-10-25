@@ -27,15 +27,15 @@ describe('AboutTasteComponent', () => {
     });
 
     const httpMock = TestBed.inject(HttpTestingController);
-    httpMock.expectOne('/assets/data/identity.json').flush(mockIdentity);
-    httpMock.expectOne('/assets/data/process-steps.json').flush([]);
-    httpMock.expectOne('/assets/data/projects.json').flush([]);
-    httpMock.expectOne('/assets/data/experience.json').flush([]);
-    httpMock.expectOne('/assets/data/tech-stack.json').flush([]);
+    httpMock.expectOne('assets/data/identity.json').flush(mockIdentity);
+    httpMock.expectOne('assets/data/process-steps.json').flush([]);
+    httpMock.expectOne('assets/data/projects.json').flush([]);
+    httpMock.expectOne('assets/data/experience.json').flush([]);
+    httpMock.expectOne('assets/data/tech-stack.json').flush([]);
     httpMock
-      .expectOne('/assets/data/bookmarks.json')
+      .expectOne('assets/data/bookmarks.json')
       .flush([{ title: 'A Great Article', url: 'https://example.com', note: 'Changed my mind.' }]);
-    httpMock.expectOne('/assets/data/blog-posts.json').flush([]);
+    httpMock.expectOne('assets/data/blog-posts.json').flush([]);
 
     detectChanges();
 

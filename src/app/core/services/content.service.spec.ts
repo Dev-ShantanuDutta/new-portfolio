@@ -16,17 +16,17 @@ describe('ContentService', () => {
 
   const flushRemaining = (except: string[] = []) => {
     const urls = [
-      '/assets/data/identity.json',
-      '/assets/data/process-steps.json',
-      '/assets/data/projects.json',
-      '/assets/data/experience.json',
-      '/assets/data/tech-stack.json',
-      '/assets/data/bookmarks.json',
-      '/assets/data/blog-posts.json',
+      'assets/data/identity.json',
+      'assets/data/process-steps.json',
+      'assets/data/projects.json',
+      'assets/data/experience.json',
+      'assets/data/tech-stack.json',
+      'assets/data/bookmarks.json',
+      'assets/data/blog-posts.json',
     ].filter((url) => !except.includes(url));
 
     for (const url of urls) {
-      httpMock.expectOne(url).flush(url === '/assets/data/identity.json' ? null : []);
+      httpMock.expectOne(url).flush(url === 'assets/data/identity.json' ? null : []);
     }
   };
 
@@ -59,13 +59,13 @@ describe('ContentService', () => {
       },
     };
 
-    const req = httpMock.expectOne('/assets/data/identity.json');
+    const req = httpMock.expectOne('assets/data/identity.json');
     expect(req.request.method).toBe('GET');
     req.flush(mockIdentity);
 
     expect(service.identity()).toEqual(mockIdentity);
 
-    flushRemaining(['/assets/data/identity.json']);
+    flushRemaining(['assets/data/identity.json']);
   });
 
   it('loads process steps and exposes them as a signal', () => {
@@ -79,13 +79,13 @@ describe('ContentService', () => {
       },
     ];
 
-    httpMock.expectOne('/assets/data/identity.json').flush(null);
-    httpMock.expectOne('/assets/data/process-steps.json').flush(mockSteps);
-    httpMock.expectOne('/assets/data/projects.json').flush([]);
-    httpMock.expectOne('/assets/data/experience.json').flush([]);
-    httpMock.expectOne('/assets/data/tech-stack.json').flush([]);
-    httpMock.expectOne('/assets/data/bookmarks.json').flush([]);
-    httpMock.expectOne('/assets/data/blog-posts.json').flush([]);
+    httpMock.expectOne('assets/data/identity.json').flush(null);
+    httpMock.expectOne('assets/data/process-steps.json').flush(mockSteps);
+    httpMock.expectOne('assets/data/projects.json').flush([]);
+    httpMock.expectOne('assets/data/experience.json').flush([]);
+    httpMock.expectOne('assets/data/tech-stack.json').flush([]);
+    httpMock.expectOne('assets/data/bookmarks.json').flush([]);
+    httpMock.expectOne('assets/data/blog-posts.json').flush([]);
 
     expect(service.processSteps()).toEqual(mockSteps);
   });
@@ -112,18 +112,18 @@ describe('ContentService', () => {
       },
     ];
 
-    httpMock.expectOne('/assets/data/identity.json').flush(null);
-    httpMock.expectOne('/assets/data/process-steps.json').flush([]);
-    const req = httpMock.expectOne('/assets/data/projects.json');
+    httpMock.expectOne('assets/data/identity.json').flush(null);
+    httpMock.expectOne('assets/data/process-steps.json').flush([]);
+    const req = httpMock.expectOne('assets/data/projects.json');
     expect(req.request.method).toBe('GET');
     req.flush(mockProjects);
 
     expect(service.projects()).toEqual(mockProjects);
 
-    httpMock.expectOne('/assets/data/experience.json').flush([]);
-    httpMock.expectOne('/assets/data/tech-stack.json').flush([]);
-    httpMock.expectOne('/assets/data/bookmarks.json').flush([]);
-    httpMock.expectOne('/assets/data/blog-posts.json').flush([]);
+    httpMock.expectOne('assets/data/experience.json').flush([]);
+    httpMock.expectOne('assets/data/tech-stack.json').flush([]);
+    httpMock.expectOne('assets/data/bookmarks.json').flush([]);
+    httpMock.expectOne('assets/data/blog-posts.json').flush([]);
   });
 
   it('loads experience entries and exposes them as a signal', () => {
@@ -140,13 +140,13 @@ describe('ContentService', () => {
       },
     ];
 
-    httpMock.expectOne('/assets/data/identity.json').flush(null);
-    httpMock.expectOne('/assets/data/process-steps.json').flush([]);
-    httpMock.expectOne('/assets/data/projects.json').flush([]);
-    httpMock.expectOne('/assets/data/experience.json').flush(mockExperience);
-    httpMock.expectOne('/assets/data/tech-stack.json').flush([]);
-    httpMock.expectOne('/assets/data/bookmarks.json').flush([]);
-    httpMock.expectOne('/assets/data/blog-posts.json').flush([]);
+    httpMock.expectOne('assets/data/identity.json').flush(null);
+    httpMock.expectOne('assets/data/process-steps.json').flush([]);
+    httpMock.expectOne('assets/data/projects.json').flush([]);
+    httpMock.expectOne('assets/data/experience.json').flush(mockExperience);
+    httpMock.expectOne('assets/data/tech-stack.json').flush([]);
+    httpMock.expectOne('assets/data/bookmarks.json').flush([]);
+    httpMock.expectOne('assets/data/blog-posts.json').flush([]);
 
     expect(service.experience()).toEqual(mockExperience);
   });
@@ -154,13 +154,13 @@ describe('ContentService', () => {
   it('loads the tech stack and exposes it as a signal', () => {
     const mockTechStack: TechEntry[] = [{ name: 'Angular', icon: 'NG' }];
 
-    httpMock.expectOne('/assets/data/identity.json').flush(null);
-    httpMock.expectOne('/assets/data/process-steps.json').flush([]);
-    httpMock.expectOne('/assets/data/projects.json').flush([]);
-    httpMock.expectOne('/assets/data/experience.json').flush([]);
-    httpMock.expectOne('/assets/data/tech-stack.json').flush(mockTechStack);
-    httpMock.expectOne('/assets/data/bookmarks.json').flush([]);
-    httpMock.expectOne('/assets/data/blog-posts.json').flush([]);
+    httpMock.expectOne('assets/data/identity.json').flush(null);
+    httpMock.expectOne('assets/data/process-steps.json').flush([]);
+    httpMock.expectOne('assets/data/projects.json').flush([]);
+    httpMock.expectOne('assets/data/experience.json').flush([]);
+    httpMock.expectOne('assets/data/tech-stack.json').flush(mockTechStack);
+    httpMock.expectOne('assets/data/bookmarks.json').flush([]);
+    httpMock.expectOne('assets/data/blog-posts.json').flush([]);
 
     expect(service.techStack()).toEqual(mockTechStack);
   });
@@ -168,13 +168,13 @@ describe('ContentService', () => {
   it('loads bookmarks and exposes them as a signal', () => {
     const mockBookmarks: Bookmark[] = [{ title: 'Article', url: 'https://example.com' }];
 
-    httpMock.expectOne('/assets/data/identity.json').flush(null);
-    httpMock.expectOne('/assets/data/process-steps.json').flush([]);
-    httpMock.expectOne('/assets/data/projects.json').flush([]);
-    httpMock.expectOne('/assets/data/experience.json').flush([]);
-    httpMock.expectOne('/assets/data/tech-stack.json').flush([]);
-    httpMock.expectOne('/assets/data/bookmarks.json').flush(mockBookmarks);
-    httpMock.expectOne('/assets/data/blog-posts.json').flush([]);
+    httpMock.expectOne('assets/data/identity.json').flush(null);
+    httpMock.expectOne('assets/data/process-steps.json').flush([]);
+    httpMock.expectOne('assets/data/projects.json').flush([]);
+    httpMock.expectOne('assets/data/experience.json').flush([]);
+    httpMock.expectOne('assets/data/tech-stack.json').flush([]);
+    httpMock.expectOne('assets/data/bookmarks.json').flush(mockBookmarks);
+    httpMock.expectOne('assets/data/blog-posts.json').flush([]);
 
     expect(service.bookmarks()).toEqual(mockBookmarks);
   });
@@ -191,13 +191,13 @@ describe('ContentService', () => {
       },
     ];
 
-    httpMock.expectOne('/assets/data/identity.json').flush(null);
-    httpMock.expectOne('/assets/data/process-steps.json').flush([]);
-    httpMock.expectOne('/assets/data/projects.json').flush([]);
-    httpMock.expectOne('/assets/data/experience.json').flush([]);
-    httpMock.expectOne('/assets/data/tech-stack.json').flush([]);
-    httpMock.expectOne('/assets/data/bookmarks.json').flush([]);
-    httpMock.expectOne('/assets/data/blog-posts.json').flush(mockPosts);
+    httpMock.expectOne('assets/data/identity.json').flush(null);
+    httpMock.expectOne('assets/data/process-steps.json').flush([]);
+    httpMock.expectOne('assets/data/projects.json').flush([]);
+    httpMock.expectOne('assets/data/experience.json').flush([]);
+    httpMock.expectOne('assets/data/tech-stack.json').flush([]);
+    httpMock.expectOne('assets/data/bookmarks.json').flush([]);
+    httpMock.expectOne('assets/data/blog-posts.json').flush(mockPosts);
 
     expect(service.blogPosts()).toEqual(mockPosts);
   });

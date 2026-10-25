@@ -37,14 +37,14 @@ function resolve(slug: string | null): Observable<BlogPost | RedirectCommand> {
  */
 function flushOtherContentRequests(httpMock: HttpTestingController): void {
   for (const url of [
-    '/assets/data/identity.json',
-    '/assets/data/process-steps.json',
-    '/assets/data/projects.json',
-    '/assets/data/experience.json',
-    '/assets/data/tech-stack.json',
-    '/assets/data/bookmarks.json',
+    'assets/data/identity.json',
+    'assets/data/process-steps.json',
+    'assets/data/projects.json',
+    'assets/data/experience.json',
+    'assets/data/tech-stack.json',
+    'assets/data/bookmarks.json',
   ]) {
-    httpMock.expectOne(url).flush(url === '/assets/data/identity.json' ? null : []);
+    httpMock.expectOne(url).flush(url === 'assets/data/identity.json' ? null : []);
   }
 }
 
@@ -70,7 +70,7 @@ describe('blogPostResolver', () => {
     let result: BlogPost | RedirectCommand | undefined;
     resolve('demo-post').subscribe((value) => (result = value));
 
-    httpMock.expectOne('/assets/data/blog-posts.json').flush(mockPosts);
+    httpMock.expectOne('assets/data/blog-posts.json').flush(mockPosts);
     flushOtherContentRequests(httpMock);
 
     expect(result).toEqual(mockPosts[0]);
@@ -82,7 +82,7 @@ describe('blogPostResolver', () => {
     let result: BlogPost | RedirectCommand | undefined;
     resolve('missing').subscribe((value) => (result = value));
 
-    httpMock.expectOne('/assets/data/blog-posts.json').flush(mockPosts);
+    httpMock.expectOne('assets/data/blog-posts.json').flush(mockPosts);
     flushOtherContentRequests(httpMock);
 
     expect(result).toBeInstanceOf(RedirectCommand);

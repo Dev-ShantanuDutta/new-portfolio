@@ -45,14 +45,14 @@ function resolve(slug: string | null): Observable<Project | RedirectCommand> {
  */
 function flushOtherContentRequests(httpMock: HttpTestingController): void {
   for (const url of [
-    '/assets/data/identity.json',
-    '/assets/data/process-steps.json',
-    '/assets/data/experience.json',
-    '/assets/data/tech-stack.json',
-    '/assets/data/bookmarks.json',
-    '/assets/data/blog-posts.json',
+    'assets/data/identity.json',
+    'assets/data/process-steps.json',
+    'assets/data/experience.json',
+    'assets/data/tech-stack.json',
+    'assets/data/bookmarks.json',
+    'assets/data/blog-posts.json',
   ]) {
-    httpMock.expectOne(url).flush(url === '/assets/data/identity.json' ? null : []);
+    httpMock.expectOne(url).flush(url === 'assets/data/identity.json' ? null : []);
   }
 }
 
@@ -78,7 +78,7 @@ describe('projectResolver', () => {
     let result: Project | RedirectCommand | undefined;
     resolve('demo').subscribe((value) => (result = value));
 
-    httpMock.expectOne('/assets/data/projects.json').flush(mockProjects);
+    httpMock.expectOne('assets/data/projects.json').flush(mockProjects);
     flushOtherContentRequests(httpMock);
 
     expect(result).toEqual(mockProjects[0]);
@@ -90,7 +90,7 @@ describe('projectResolver', () => {
     let result: Project | RedirectCommand | undefined;
     resolve('missing').subscribe((value) => (result = value));
 
-    httpMock.expectOne('/assets/data/projects.json').flush(mockProjects);
+    httpMock.expectOne('assets/data/projects.json').flush(mockProjects);
     flushOtherContentRequests(httpMock);
 
     expect(result).toBeInstanceOf(RedirectCommand);

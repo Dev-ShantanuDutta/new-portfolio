@@ -13,7 +13,7 @@ describe('ComingSoonComponent', () => {
       .match(() => true)
       .forEach((req) =>
         req.flush(
-          req.request.url === '/assets/data/projects.json'
+          req.request.url === 'assets/data/projects.json'
             ? [{ slug: 'candle-shop', name: 'Candle Shop' }]
             : null,
         ),
