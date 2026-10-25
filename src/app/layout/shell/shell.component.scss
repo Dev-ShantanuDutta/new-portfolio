@@ -1,5 +1,0 @@
-// Block (not the default inline) so the sticky nav's containing block is the
-// full page height, not <body>'s 100%-of-viewport box from the reset.
-:host {
-  display: block;
-}
