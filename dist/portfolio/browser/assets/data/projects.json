@@ -81,24 +81,64 @@
   },
   {
     "slug": "handmade-candle-ecommerce",
-    "name": "Handmade Candle E-commerce",
+    "name": "Aroha Candles",
     "origin": "personal",
     "status": "none",
-    "reframe": "A full-stack store for a small handmade-candle business — checkout built so a failed payment can never become a paid-looking order.",
+    "stage": "Live soon",
+    "reframe": "A full-stack online store for Aroha Candles, a small handmade-candle business — checkout built so a failed payment can never become a paid-looking order.",
     "techTags": ["ASP.NET Core", "Dapper", "SQL Server", "React"],
     "links": {
       "github": "/coming-soon?project=handmade-candle-ecommerce",
       "demo": "/coming-soon?project=handmade-candle-ecommerce"
     },
     "caseStudy": {
-      "problem": "A small handmade-candle business needed its own online store to sell directly to customers.",
+      "problem": "Aroha Candles, a small handmade-candle business, needed its own online store to sell directly to customers.",
       "constraints": "Solo project, built in my own time for a friend's home business. I owned everything from database design to deployment, with no team to review my code, and the owner isn't technical, so managing products and orders had to be simple and hosting costs had to stay low.",
       "role": "Full-stack: ASP.NET Core API with Dapper and SQL Server, and the React storefront.",
       "architecture": "React storefront -> ASP.NET Core Web API -> Dapper -> SQL Server",
       "technicalChallenge": "Handling failed or cancelled payments correctly, so an order record is never created for a cart that didn't actually complete checkout.",
       "decision": "Split checkout into separately shippable pull requests — cart persistence, address capture, payment integration, order confirmation — instead of one large change, so each piece could be tested and shipped on its own while working solo. Chose Dapper over Entity Framework Core because the schema is small and checkout depends on a few critical queries. Writing that SQL by hand made it clear exactly when an order, its stock updates and its payment status are written in one transaction, and Dapper's low overhead suited cheap hosting.",
-      "result": "The business has its own storefront to sell directly to customers instead of relying only on word of mouth and social media messages. Reviewing my own payment-integration PR before merging caught the failed-payment case before release, so a declined or cancelled payment leaves the cart intact and never creates an order.",
+      "result": "Once it goes live, the business will have its own storefront to sell directly to customers instead of relying only on word of mouth and social media messages. Reviewing my own payment-integration PR before merging caught the failed-payment case before release, so a declined or cancelled payment leaves the cart intact and never creates an order.",
       "learned": "Working alone doesn't mean skipping process: splitting checkout into small PRs and reviewing each one as if someone else wrote it is what caught the payment bug before a real customer could hit it."
+    }
+  },
+  {
+    "slug": "society-ledger",
+    "name": "Society Ledger",
+    "origin": "personal",
+    "status": "none",
+    "stage": "System design in progress",
+    "reframe": "An upcoming multi-tenant SaaS that gives housing societies a transparent maintenance ledger, set up to match their own buildings, floors and committee.",
+    "techTags": ["ASP.NET Core", "Entity Framework Core", "SQL Server", "Angular"],
+    "links": {
+      "github": "/coming-soon?project=society-ledger",
+      "demo": "/coming-soon?project=society-ledger"
+    },
+    "overview": {
+      "purpose": "Most housing societies still track maintenance in spreadsheets, notebooks and WhatsApp groups, and the books change hands, often messily, every time the committee changes. Society Ledger will give each society one place to bill, collect and account for maintenance that residents can trust.",
+      "audience": "Committee members such as the secretary, treasurer and building representatives who manage collections and spending, and the residents who pay maintenance and want to see where it goes.",
+      "solves": [
+        {
+          "title": "One app, many societies.",
+          "detail": "A multi-tenant design keeps each society's data fully separate while they all run on the same platform."
+        },
+        {
+          "title": "Set up to match the society.",
+          "detail": "Each society maps its own buildings, floors and flats itself, with no developer needed."
+        },
+        {
+          "title": "Building-wise and society-wide collections.",
+          "detail": "Maintenance can be charged per building, and society-level funds for shared facilities are tracked separately, so each building sees exactly what it owes and what it paid for."
+        },
+        {
+          "title": "Roles that follow the committee term.",
+          "detail": "Members get role-based access only for their term, so whoever has the time can update records, and access moves to the next committee when the term ends instead of lingering."
+        },
+        {
+          "title": "Books residents can trust.",
+          "detail": "Planned features go beyond typical society apps: ledger entries that can be reversed but never edited, approvals from more than one member for larger spending, and fund-goal tracking for one-off collections."
+        }
+      ]
     }
   },
   {
@@ -200,6 +240,76 @@
         {
           "title": "Shipping and quality discipline.",
           "detail": "Builds for each environment (dev, QA, UAT, prod) run through Jenkins CI, ESLint is enforced with each issue fixed by hand, and release notes appear inside the app and are written in the same JSON format that MyAML produces."
+        }
+      ]
+    }
+  },
+  {
+    "slug": "ems-event-management",
+    "name": "EMS: Event Management System",
+    "origin": "company",
+    "company": "ProjectTree",
+    "status": "none",
+    "reframe": "Lets event admins design their own event pages from reusable templates and show each event only to participants in the regions where it's hosted.",
+    "techTags": ["Angular", "TypeScript", "ASP.NET Core", "SQL Server"],
+    "links": {
+      "github": null,
+      "demo": "/demo-unavailable?project=ems-event-management"
+    },
+    "overview": {
+      "purpose": "Every event needs its own landing page, participant rules and target audience, and building each one by hand doesn't scale. EMS lets event admins set up an event to their own requirements, based on the geographic level it's hosted at, without a developer building anything new.",
+      "audience": "Event admins who create and configure events, and the attendees and volunteers in the selected regions who see and join them.",
+      "solves": [
+        {
+          "title": "Two kinds of templates.",
+          "detail": "Master templates hold the reusable base design, and event templates build on them for a single event, so admins don't start from scratch each time."
+        },
+        {
+          "title": "Events configured without code.",
+          "detail": "Admins set the event logo, banner and other images, pick from classic landing-page styles, and write the About and Purpose sections themselves."
+        },
+        {
+          "title": "Built-in participant types.",
+          "detail": "Each event chooses who it's for, attendees or volunteers, from a built-in selection."
+        },
+        {
+          "title": "Shown only where it's hosted.",
+          "detail": "Admins pick the hosting regions at the right geographic level, and the event is shown only to participants in those regions."
+        },
+        {
+          "title": "Spreadsheet-style tracking.",
+          "detail": "Admins see all event data in an Excel-like grid and filter it by attendee and volunteer details to get exactly the list they need."
+        }
+      ]
+    }
+  },
+  {
+    "slug": "helpdesk-management",
+    "name": "Help Desk Management System",
+    "origin": "company",
+    "company": "ProjectTree",
+    "status": "none",
+    "reframe": "One ticketing platform where users of all our client's projects raise queries and chat live with our team until each one is solved.",
+    "techTags": ["Angular", "TypeScript", "ASP.NET Core", "SQL Server"],
+    "links": {
+      "github": null,
+      "demo": "/demo-unavailable?project=helpdesk-management"
+    },
+    "overview": {
+      "purpose": "Users of our client's different projects had no single place to raise a query and follow it up. The Help Desk is a simple ticketing system that brings every ticket, from every project, onto one platform.",
+      "audience": "Users of the client's projects who raise tickets, and our support and development team who pick them up and resolve them.",
+      "solves": [
+        {
+          "title": "One platform for every project.",
+          "detail": "Tickets for any query on any project are raised and tracked in the same place, instead of spread across emails and messages."
+        },
+        {
+          "title": "Simple ticket raising.",
+          "detail": "Users raise a ticket for their query in a few steps, without needing to know who on our team handles their project."
+        },
+        {
+          "title": "Built-in live chat.",
+          "detail": "Each ticket has a chat between the person who raised it and our team, so they get live updates on progress and the solution as it happens."
         }
       ]
     }

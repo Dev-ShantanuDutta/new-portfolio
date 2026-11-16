@@ -7,8 +7,8 @@
     { "text": "cut their API response times by 40%", "highlighted": true },
     { "text": ".", "highlighted": false }
   ],
-  "currentFocus": "Building a JSON Config Builder in Angular 20 so non-technical teams can create valid config files from a simple form",
-  "currentFocusDate": "2026-10-16",
+  "currentFocus": "A multi-tenant SaaS maintenance ledger for housing societies on ASP.NET Core and Angular: each society maps its own buildings and floors, and committee members get term-based roles that hand over when the term ends",
+  "currentFocusDate": "2026-11-16",
   "ctas": [
     {
       "label": "Email me",
