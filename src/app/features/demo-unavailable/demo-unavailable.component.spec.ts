@@ -13,7 +13,7 @@ describe('DemoUnavailableComponent', () => {
       .match(() => true)
       .forEach((req) =>
         req.flush(
-          req.request.url === '/assets/data/projects.json'
+          req.request.url === 'assets/data/projects.json'
             ? [{ slug: 'admin-portal', name: 'Admin Portal', origin: 'company', company: 'Acme' }]
             : null,
         ),

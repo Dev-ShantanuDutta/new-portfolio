@@ -13,7 +13,7 @@ describe('ContactPageComponent', () => {
       .match(() => true)
       .forEach((req) =>
         req.flush(
-          req.request.url === '/assets/data/identity.json'
+          req.request.url === 'assets/data/identity.json'
             ? {
                 contact: {
                   email: 'me@example.com',

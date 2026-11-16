@@ -35,13 +35,13 @@ describe('ExperienceComponent', () => {
     });
 
     const httpMock = TestBed.inject(HttpTestingController);
-    httpMock.expectOne('/assets/data/identity.json').flush(null);
-    httpMock.expectOne('/assets/data/process-steps.json').flush([]);
-    httpMock.expectOne('/assets/data/projects.json').flush([]);
-    httpMock.expectOne('/assets/data/experience.json').flush(mockExperience);
-    httpMock.expectOne('/assets/data/tech-stack.json').flush([]);
-    httpMock.expectOne('/assets/data/bookmarks.json').flush([]);
-    httpMock.expectOne('/assets/data/blog-posts.json').flush([]);
+    httpMock.expectOne('assets/data/identity.json').flush(null);
+    httpMock.expectOne('assets/data/process-steps.json').flush([]);
+    httpMock.expectOne('assets/data/projects.json').flush([]);
+    httpMock.expectOne('assets/data/experience.json').flush(mockExperience);
+    httpMock.expectOne('assets/data/tech-stack.json').flush([]);
+    httpMock.expectOne('assets/data/bookmarks.json').flush([]);
+    httpMock.expectOne('assets/data/blog-posts.json').flush([]);
 
     detectChanges();
 
@@ -59,13 +59,13 @@ describe('ExperienceComponent', () => {
     });
 
     const httpMock = TestBed.inject(HttpTestingController);
-    httpMock.expectOne('/assets/data/identity.json').flush(null);
-    httpMock.expectOne('/assets/data/process-steps.json').flush([]);
-    httpMock.expectOne('/assets/data/projects.json').flush([]);
-    httpMock.expectOne('/assets/data/experience.json').flush(mockExperience);
-    httpMock.expectOne('/assets/data/tech-stack.json').flush([]);
-    httpMock.expectOne('/assets/data/bookmarks.json').flush([]);
-    httpMock.expectOne('/assets/data/blog-posts.json').flush([]);
+    httpMock.expectOne('assets/data/identity.json').flush(null);
+    httpMock.expectOne('assets/data/process-steps.json').flush([]);
+    httpMock.expectOne('assets/data/projects.json').flush([]);
+    httpMock.expectOne('assets/data/experience.json').flush(mockExperience);
+    httpMock.expectOne('assets/data/tech-stack.json').flush([]);
+    httpMock.expectOne('assets/data/bookmarks.json').flush([]);
+    httpMock.expectOne('assets/data/blog-posts.json').flush([]);
 
     detectChanges();
 

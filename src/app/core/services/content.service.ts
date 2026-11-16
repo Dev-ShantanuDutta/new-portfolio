@@ -15,13 +15,13 @@ export class ContentService {
   private readonly http = inject(HttpClient);
 
   /** Hero identity/specialization copy. `null` until the request resolves. */
-  readonly identity = toSignal(this.http.get<Identity>('/assets/data/identity.json'), {
+  readonly identity = toSignal(this.http.get<Identity>('assets/data/identity.json'), {
     initialValue: null,
   });
 
   /** How I Engineer's 2x2 process grid entries. */
   readonly processSteps = toSignal(
-    this.http.get<ProcessStep[]>('/assets/data/process-steps.json'),
+    this.http.get<ProcessStep[]>('assets/data/process-steps.json'),
     { initialValue: [] },
   );
 
@@ -31,23 +31,23 @@ export class ContentService {
    * can await the real, resolved value without triggering a second HTTP
    * request — `shareReplay` lets both consumers share the one response.
    */
-  readonly projects$ = this.http.get<Project[]>('/assets/data/projects.json').pipe(shareReplay(1));
+  readonly projects$ = this.http.get<Project[]>('assets/data/projects.json').pipe(shareReplay(1));
 
   /** All portfolio projects: teaser fields plus their expanded case study. */
   readonly projects = toSignal(this.projects$, { initialValue: [] });
 
   /** Work-history entries for the experience accordion, newest first. */
-  readonly experience = toSignal(this.http.get<Experience[]>('/assets/data/experience.json'), {
+  readonly experience = toSignal(this.http.get<Experience[]>('assets/data/experience.json'), {
     initialValue: [],
   });
 
   /** Tech-stack logo-row entries. */
-  readonly techStack = toSignal(this.http.get<TechEntry[]>('/assets/data/tech-stack.json'), {
+  readonly techStack = toSignal(this.http.get<TechEntry[]>('assets/data/tech-stack.json'), {
     initialValue: [],
   });
 
   /** Curated external bookmarks for the About/Taste section. */
-  readonly bookmarks = toSignal(this.http.get<Bookmark[]>('/assets/data/bookmarks.json'), {
+  readonly bookmarks = toSignal(this.http.get<Bookmark[]>('assets/data/bookmarks.json'), {
     initialValue: [],
   });
 
@@ -56,7 +56,7 @@ export class ContentService {
    * reason as `projects$`: the `/blog/:slug` resolver awaits this directly.
    */
   readonly blogPosts$ = this.http
-    .get<BlogPost[]>('/assets/data/blog-posts.json')
+    .get<BlogPost[]>('assets/data/blog-posts.json')
     .pipe(shareReplay(1));
 
   /** Blog post metadata and content, newest first. */

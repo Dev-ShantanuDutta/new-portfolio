@@ -31,10 +31,10 @@ describe('HeroComponent', () => {
     });
 
     const httpMock = TestBed.inject(HttpTestingController);
-    httpMock.expectOne('/assets/data/identity.json').flush(mockIdentity);
-    httpMock.expectOne('/assets/data/process-steps.json').flush([]);
-    httpMock.expectOne('/assets/data/projects.json').flush([]);
-    httpMock.expectOne('/assets/data/experience.json').flush([
+    httpMock.expectOne('assets/data/identity.json').flush(mockIdentity);
+    httpMock.expectOne('assets/data/process-steps.json').flush([]);
+    httpMock.expectOne('assets/data/projects.json').flush([]);
+    httpMock.expectOne('assets/data/experience.json').flush([
       {
         id: 'role-1',
         role: 'Staff Engineer',
@@ -46,9 +46,9 @@ describe('HeroComponent', () => {
         highlights: [],
       },
     ]);
-    httpMock.expectOne('/assets/data/tech-stack.json').flush([]);
-    httpMock.expectOne('/assets/data/bookmarks.json').flush([]);
-    httpMock.expectOne('/assets/data/blog-posts.json').flush([]);
+    httpMock.expectOne('assets/data/tech-stack.json').flush([]);
+    httpMock.expectOne('assets/data/bookmarks.json').flush([]);
+    httpMock.expectOne('assets/data/blog-posts.json').flush([]);
     httpMock.expectOne('https://api.github.com/users/Shantanu-Dutta-2001').flush({
       login: 'octocat',
       avatar_url: 'https://avatars.githubusercontent.com/u/1',

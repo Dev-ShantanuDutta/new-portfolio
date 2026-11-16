@@ -11,16 +11,16 @@ describe('ProofStripComponent', () => {
     });
 
     const httpMock = TestBed.inject(HttpTestingController);
-    httpMock.expectOne('/assets/data/identity.json').flush(null);
-    httpMock.expectOne('/assets/data/process-steps.json').flush([]);
-    httpMock.expectOne('/assets/data/projects.json').flush([]);
-    httpMock.expectOne('/assets/data/experience.json').flush([]);
-    httpMock.expectOne('/assets/data/tech-stack.json').flush([
+    httpMock.expectOne('assets/data/identity.json').flush(null);
+    httpMock.expectOne('assets/data/process-steps.json').flush([]);
+    httpMock.expectOne('assets/data/projects.json').flush([]);
+    httpMock.expectOne('assets/data/experience.json').flush([]);
+    httpMock.expectOne('assets/data/tech-stack.json').flush([
       { name: 'Angular', icon: 'NG' },
       { name: 'Rust', icon: 'RS' },
     ]);
-    httpMock.expectOne('/assets/data/bookmarks.json').flush([]);
-    httpMock.expectOne('/assets/data/blog-posts.json').flush([]);
+    httpMock.expectOne('assets/data/bookmarks.json').flush([]);
+    httpMock.expectOne('assets/data/blog-posts.json').flush([]);
     httpMock.expectOne('https://api.github.com/users/Shantanu-Dutta-2001').flush({
       login: 'octocat',
       avatar_url: 'https://avatars.githubusercontent.com/u/1',
@@ -51,16 +51,16 @@ describe('ProofStripComponent', () => {
 
     const httpMock = TestBed.inject(HttpTestingController);
     for (const url of [
-      '/assets/data/process-steps.json',
-      '/assets/data/projects.json',
-      '/assets/data/experience.json',
-      '/assets/data/tech-stack.json',
-      '/assets/data/bookmarks.json',
-      '/assets/data/blog-posts.json',
+      'assets/data/process-steps.json',
+      'assets/data/projects.json',
+      'assets/data/experience.json',
+      'assets/data/tech-stack.json',
+      'assets/data/bookmarks.json',
+      'assets/data/blog-posts.json',
     ]) {
       httpMock.expectOne(url).flush([]);
     }
-    httpMock.expectOne('/assets/data/identity.json').flush({
+    httpMock.expectOne('assets/data/identity.json').flush({
       certifications: [
         {
           name: 'Claude Code in Action',
@@ -104,15 +104,15 @@ describe('ProofStripComponent', () => {
 
     const httpMock = TestBed.inject(HttpTestingController);
     for (const url of [
-      '/assets/data/identity.json',
-      '/assets/data/process-steps.json',
-      '/assets/data/projects.json',
-      '/assets/data/experience.json',
-      '/assets/data/tech-stack.json',
-      '/assets/data/bookmarks.json',
-      '/assets/data/blog-posts.json',
+      'assets/data/identity.json',
+      'assets/data/process-steps.json',
+      'assets/data/projects.json',
+      'assets/data/experience.json',
+      'assets/data/tech-stack.json',
+      'assets/data/bookmarks.json',
+      'assets/data/blog-posts.json',
     ]) {
-      httpMock.expectOne(url).flush(url === '/assets/data/identity.json' ? null : []);
+      httpMock.expectOne(url).flush(url === 'assets/data/identity.json' ? null : []);
     }
     httpMock.expectOne('https://api.github.com/users/Shantanu-Dutta-2001').flush({
       login: 'octocat',

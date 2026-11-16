@@ -20,15 +20,15 @@ describe('AppComponent', () => {
 
     const httpMock = TestBed.inject(HttpTestingController);
     for (const url of [
-      '/assets/data/identity.json',
-      '/assets/data/process-steps.json',
-      '/assets/data/projects.json',
-      '/assets/data/experience.json',
-      '/assets/data/tech-stack.json',
-      '/assets/data/bookmarks.json',
-      '/assets/data/blog-posts.json',
+      'assets/data/identity.json',
+      'assets/data/process-steps.json',
+      'assets/data/projects.json',
+      'assets/data/experience.json',
+      'assets/data/tech-stack.json',
+      'assets/data/bookmarks.json',
+      'assets/data/blog-posts.json',
     ]) {
-      httpMock.expectOne(url).flush(url === '/assets/data/identity.json' ? null : []);
+      httpMock.expectOne(url).flush(url === 'assets/data/identity.json' ? null : []);
     }
     httpMock.expectOne('https://api.github.com/users/Shantanu-Dutta-2001').flush({
       login: 'octocat',

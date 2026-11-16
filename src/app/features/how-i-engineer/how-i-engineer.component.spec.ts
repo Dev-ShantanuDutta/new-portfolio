@@ -57,13 +57,13 @@ describe('HowIEngineerComponent', () => {
     });
 
     const httpMock = TestBed.inject(HttpTestingController);
-    httpMock.expectOne('/assets/data/identity.json').flush(null);
-    httpMock.expectOne('/assets/data/process-steps.json').flush(mockSteps);
-    httpMock.expectOne('/assets/data/projects.json').flush([]);
-    httpMock.expectOne('/assets/data/experience.json').flush([]);
-    httpMock.expectOne('/assets/data/tech-stack.json').flush([]);
-    httpMock.expectOne('/assets/data/bookmarks.json').flush([]);
-    httpMock.expectOne('/assets/data/blog-posts.json').flush([]);
+    httpMock.expectOne('assets/data/identity.json').flush(null);
+    httpMock.expectOne('assets/data/process-steps.json').flush(mockSteps);
+    httpMock.expectOne('assets/data/projects.json').flush([]);
+    httpMock.expectOne('assets/data/experience.json').flush([]);
+    httpMock.expectOne('assets/data/tech-stack.json').flush([]);
+    httpMock.expectOne('assets/data/bookmarks.json').flush([]);
+    httpMock.expectOne('assets/data/blog-posts.json').flush([]);
 
     detectChanges();
 
