@@ -2,13 +2,18 @@
   --font-body: 'Inter', system-ui, -apple-system, sans-serif;
   --font-mono: 'JetBrains Mono', ui-monospace, 'SFMono-Regular', monospace;
 
+  // Small and body sizes stay fixed: they are already at the readable floor, and
+  // inputs below 16px make iOS zoom in on focus.
   --text-xs: 0.75rem;
   --text-sm: 0.875rem;
   --text-base: 1rem;
-  --text-lg: 1.125rem;
-  --text-xl: 1.5rem;
-  --text-2xl: 2rem;
-  --text-3xl: 2.75rem;
+
+  // Larger sizes scale with the viewport, from their phone size at 360px wide to
+  // their desktop size at 1280px. The rem part keeps them responsive to user zoom.
+  --text-lg: clamp(1.0625rem, 1.038rem + 0.1087vw, 1.125rem); // 17px → 18px
+  --text-xl: clamp(1.25rem, 1.1522rem + 0.4348vw, 1.5rem); // 20px → 24px
+  --text-2xl: clamp(1.5rem, 1.3043rem + 0.8696vw, 2rem); // 24px → 32px
+  --text-3xl: clamp(2rem, 1.7065rem + 1.3043vw, 2.75rem); // 32px → 44px
 
   --leading-tight: 1.2;
   --leading-normal: 1.6;

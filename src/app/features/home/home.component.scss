@@ -1,4 +1,9 @@
 :host {
   display: block;
   padding: var(--space-7) var(--space-6);
+
+  // Phones: each section already pads itself, so drop the extra outer inset.
+  @media (max-width: 640px) {
+    padding-inline: 0;
+  }
 }

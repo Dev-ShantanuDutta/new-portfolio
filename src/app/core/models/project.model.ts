@@ -30,13 +30,16 @@ export interface ProjectOverview {
   purpose: string;
   audience: string;
   solves: ProjectPoint[];
-  learned: ProjectPoint[];
+  /** Left out for projects that are still being designed. */
+  learned?: ProjectPoint[];
 }
 
 export interface Project {
   slug: string;
   name: string;
   status: ProjectStatus;
+  /** Where an unfinished project stands, e.g. "Live soon"; shown as a pill next to the name. */
+  stage?: string;
   origin: ProjectOrigin;
   /** Employer the project was built at; set when `origin` is `company`. */
   company?: string;

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>[YOUR: production domain, e.g. https://shantanudutta.dev]/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>[YOUR: production domain, e.g. https://shantanudutta.dev]/projects/json-config-builder</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>[YOUR: production domain, e.g. https://shantanudutta.dev]/projects/handmade-candle-ecommerce</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>[YOUR: production domain, e.g. https://shantanudutta.dev]/projects/society-ledger</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>[YOUR: production domain, e.g. https://shantanudutta.dev]/projects/ers-admin-portal</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>[YOUR: production domain, e.g. https://shantanudutta.dev]/projects/ems-event-management</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>[YOUR: production domain, e.g. https://shantanudutta.dev]/projects/helpdesk-management</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>[YOUR: production domain, e.g. https://shantanudutta.dev]/blog/[YOUR: first-post-slug]</loc>
+    <lastmod>2026-08-01</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>[YOUR: production domain, e.g. https://shantanudutta.dev]/blog/[YOUR: second-post-slug]</loc>
+    <lastmod>2026-06-15</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
+</urlset>

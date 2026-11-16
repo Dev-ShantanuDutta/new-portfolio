@@ -25,9 +25,14 @@ export class ComingSoonComponent {
   private readonly projects = inject(ContentService).projects;
   private readonly window = inject(WINDOW);
 
-  protected readonly projectName = computed(
-    () => this.projects().find((p) => p.slug === this.project())?.name,
+  private readonly projectData = computed(() =>
+    this.projects().find((p) => p.slug === this.project()),
   );
+
+  protected readonly projectName = computed(() => this.projectData()?.name);
+
+  /** The project's own stage (e.g. "Live soon") replaces the generic eyebrow text. */
+  protected readonly stage = computed(() => this.projectData()?.stage ?? 'Work in progress');
 
   constructor() {
     inject(SeoService).setMetadata({

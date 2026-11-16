@@ -8,6 +8,10 @@
   --space-7: 48px;
   --space-8: 64px;
 
-  --panel-padding: var(--space-5);
-  --panel-gap: var(--space-6);
+  // Page-edge and section padding: 16px on phones, growing to 32px on wide screens,
+  // so the text keeps its width on small screens.
+  --gutter: clamp(var(--space-4), 4vw, var(--space-6));
+
+  --panel-padding: clamp(var(--space-4), 3vw, var(--space-5));
+  --panel-gap: clamp(var(--space-5), 4vw, var(--space-6));
 }

@@ -1,5 +1,8 @@
 :root {
   color-scheme: light;
+  // Stops iOS Safari enlarging text when a phone is turned to landscape.
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
 
   &[data-theme='dark'] {
     color-scheme: dark;
@@ -12,4 +15,16 @@ body {
   font-family: var(--font-body);
   font-size: var(--text-base);
   line-height: var(--leading-normal);
+}
+
+// Even line lengths for headings, and long words wrap instead of widening the page.
+h1,
+h2,
+h3 {
+  text-wrap: balance;
+  overflow-wrap: break-word;
+}
+
+p {
+  text-wrap: pretty;
 }

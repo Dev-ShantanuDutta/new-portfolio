@@ -17,6 +17,9 @@
         Personal
       }
     </span>
+    @if (project().stage; as stage) {
+      <span class="project-case-study__stage">{{ stage }}</span>
+    }
     <span class="project-case-study__reframe">{{ project().reframe }}</span>
     <div class="project-case-study__tags">
       @for (tag of project().techTags; track tag) {
@@ -60,19 +63,21 @@
         </ul>
       </section>
 
-      <section class="project-overview__block project-overview__block--wide">
-        <h4 class="project-overview__heading">What I learned</h4>
-        <ul class="project-overview__list">
-          @for (point of overview.learned; track point.detail) {
-            <li>
-              @if (point.title) {
-                <strong>{{ point.title }}</strong>
-              }
-              {{ point.detail }}
-            </li>
-          }
-        </ul>
-      </section>
+      @if (overview.learned; as learned) {
+        <section class="project-overview__block project-overview__block--wide">
+          <h4 class="project-overview__heading">What I learned</h4>
+          <ul class="project-overview__list">
+            @for (point of learned; track point.detail) {
+              <li>
+                @if (point.title) {
+                  <strong>{{ point.title }}</strong>
+                }
+                {{ point.detail }}
+              </li>
+            }
+          </ul>
+        </section>
+      }
     </div>
   } @else if (project().caseStudy; as caseStudy) {
     <dl class="project-case-study__details">
